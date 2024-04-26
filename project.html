@@ -1,0 +1,33 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<!DOCTYPE html>
+<html lang="en" ng-app="weatherApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div ng-controller="WeatherController as ctrl">
+        <h2>Weather App</h2>
+        <input type="text" ng-model="ctrl.city" placeholder="Enter city">
+        <button ng-click="ctrl.getWeather()">Search</button>
+
+        <img ng-src="{{ctrl.weatherIcon}}" alt="Weather Icon">
+
+        <div>{{ctrl.temperature}}°C</div>
+
+        <div>{{ctrl.cityName}}</div>
+        <div>{{ctrl.description}}</div>
+
+        <div id="hourly-forecast">
+            <div ng-repeat="item in ctrl.hourlyData" class="hourly-item">
+                <span>{{item.hour}}:00</span>
+                <img ng-src="{{item.iconUrl}}" alt="Hourly Weather Icon">
+                <span>{{item.temperature}}°C</span>
+            </div>
+        </div>
+    </div>
+    <script src="project.js"></script> 
+</body>
+</html>
